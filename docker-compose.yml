@@ -1,0 +1,18 @@
+services:
+  mongo:
+    build: 
+      context: ./mongo
+      tags:
+        - csc468mongo:mongo
+    ports:
+    - "27017:27017"
+  node:
+    build: 
+      context: ./node
+      tags:
+      - csc468mongo:node
+    ports:
+    - "8080:8080"
+networks:
+  default:
+    driver: bridge
