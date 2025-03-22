@@ -1,4 +1,13 @@
 services:
+  node:
+    build: 
+      context: ./node
+      tags:
+      - csc468mongo:node
+    ports:
+    - "8080:8080"
+    depends_on:
+      - mongo
   mongo:
     build: 
       context: ./mongo
@@ -7,17 +16,15 @@ services:
     ports:
     - "27017:27017"
     volumes:
-      - ./mongo_data:/data/db
+      - mongo_data:/data/db
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=goldenrams
-  node:
-    build: 
-      context: ./node
-      tags:
-      - csc468mongo:node
-    ports:
-    - "8080:8080"
+      - MONGO_INITDB_DATABASE=sharkinfo
+
+volumes:
+  mongo_data:
+
 networks:
   default:
     driver: bridge

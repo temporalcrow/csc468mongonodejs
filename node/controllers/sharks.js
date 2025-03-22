@@ -2,7 +2,7 @@ const path = require('path'),
     Shark = require('../models/sharks');
 
 exports.index = function (req, res) {
-    res.sendFile(path.resolve('view/sharks.html'));
+    res.sendFile(path.resolve('views/sharks.html'));
 };
 
 exports.create = function (req, res) {

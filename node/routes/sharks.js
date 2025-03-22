@@ -12,6 +12,6 @@ router.post('/addshark', function(req, res){
 
 router.get('/getshark', function(req,res){
     Shark.list(req,res);
-});
+});1
 
 module.exports = router;
